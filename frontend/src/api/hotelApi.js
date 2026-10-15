@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:8080/api';
+const API_BASE = 'https://hotelmanagement-backend-w953.onrender.com/';
 
 function getToken() {
   return localStorage.getItem('hotel_token');
