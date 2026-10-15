@@ -33,18 +33,18 @@ export async function registerUser(payload) {
 
 // ── Stats ─────────────────────────────────────────────
 export async function fetchStats() {
-  const res = await fetch(`${API_BASE}/admin/stats`);
+  const res = await fetch(`${API_BASE}/api/admin/stats`);
   return res.ok ? res.json() : null;
 }
 
 // ── Rooms ─────────────────────────────────────────────
 export async function fetchRooms() {
-  const res = await fetch(`${API_BASE}/rooms`);
+  const res = await fetch(`${API_BASE}/api/rooms`);
   return res.ok ? res.json() : [];
 }
 
 export async function fetchAvailableRooms(roomType, checkIn, checkOut) {
-  let url = `${API_BASE}/rooms/available?`;
+  let url = `${API_BASE}/api/rooms/available?`;
   if (roomType) url += `roomType=${roomType}&`;
   if (checkIn) url += `checkInDate=${checkIn}&`;
   if (checkOut) url += `checkOutDate=${checkOut}&`;
@@ -54,12 +54,12 @@ export async function fetchAvailableRooms(roomType, checkIn, checkOut) {
 
 // ── Bookings ──────────────────────────────────────────
 export async function fetchBookings() {
-  const res = await fetch(`${API_BASE}/bookings`);
+  const res = await fetch(`${API_BASE}/api/bookings`);
   return res.ok ? res.json() : [];
 }
 
 export async function createBooking(payload) {
-  const res = await fetch(`${API_BASE}/bookings`, {
+  const res = await fetch(`${API_BASE}/api/bookings`, {
     method: 'POST',
     headers: authHeaders(),
     body: JSON.stringify(payload),
@@ -68,28 +68,28 @@ export async function createBooking(payload) {
 }
 
 export async function checkIn(id) {
-  const res = await fetch(`${API_BASE}/bookings/${id}/checkin`, { method: 'PUT', headers: authHeaders() });
+  const res = await fetch(`${API_BASE}/api/bookings/${id}/checkin`, { method: 'PUT', headers: authHeaders() });
   return res.ok;
 }
 
 export async function checkOut(id) {
-  const res = await fetch(`${API_BASE}/bookings/${id}/checkout`, { method: 'PUT', headers: authHeaders() });
+  const res = await fetch(`${API_BASE}/api/bookings/${id}/checkout`, { method: 'PUT', headers: authHeaders() });
   return res.ok;
 }
 
 export async function cancelBooking(id) {
-  const res = await fetch(`${API_BASE}/bookings/${id}/cancel`, { method: 'PUT', headers: authHeaders() });
+  const res = await fetch(`${API_BASE}/api/bookings/${id}/cancel`, { method: 'PUT', headers: authHeaders() });
   return res.ok;
 }
 
 // ── Customers ─────────────────────────────────────────
 export async function fetchCustomers() {
-  const res = await fetch(`${API_BASE}/customers`);
+  const res = await fetch(`${API_BASE}/api/customers`);
   return res.ok ? res.json() : [];
 }
 
 // ── Payments ──────────────────────────────────────────
 export async function fetchPayments() {
-  const res = await fetch(`${API_BASE}/payments`);
+  const res = await fetch(`${API_BASE}/api/payments`);
   return res.ok ? res.json() : [];
 }
